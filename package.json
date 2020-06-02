@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "sheets-pathfinder-project",
+  "version": "1.0.0",
+  "description": "Sample repository for Typescript based Google Apps Script projects",
+  "author": "Jacob Heidt",
+  "license": "MIT",
+  "keywords": [
+    "gas",
+    "google-apps-script",
+    "ts",
+    "typescript"
+  ],
+  "scripts": {
+    "build-clean": "rimraf build && npm run config-all && npm run build && npm run postbuild",
+    "build": "tsc --build src && npm run postbuild",
+    "build-project1": "tsc --build src/GasProject1",
+    "build-project2": "tsc --build src/GasProject2 && npm run postbuild",
+    "postbuild": "copyfiles -u 2 build/common-components/lib1.js build/gas/GasProject2",
+    "format": "prettier --write 'src/**/*.ts' 'src/**/*.json'",
+    "lint": "eslint --project src",
+    "config-project1": "copyfiles -u 2 src/GasProject1/appsscript.json build/gas/project1"
+  },
+  "repository": "https://github.com/PopGoesTheWza/ts-gas-project-starter.git",
+  "devDependencies": {
+    "@types/google-apps-script": "1.0.14",
+    "@types/google-apps-script-oauth2": "^38.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.1.0",
+    "@typescript-eslint/parser": "^3.1.0",
+    "copyfiles": "^2.1.1",
+    "eslint": "^7.1.0",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.8.2"
+  }
+}
